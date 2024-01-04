@@ -2,11 +2,32 @@ html {
     font-family: Arial, Helvetica, sans-serif;
 } 
 
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}  */
+
+dialog::backdrop {
+    background-color: #333A;
 }
+
+.dialogButton {
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+hr {
+    margin: 0;
+}
+
+dialog {
+    z-index: 10;
+    /* margin-top: 10px; */
+    background: green;
+    border: none;
+    border-radius: 0.5rem;
+  }
 
 input, 
 button {

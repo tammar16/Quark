@@ -8,6 +8,11 @@
     <script src="app.js" type="module" defer></script>
 </head>
 <body>
+    <dialog data-modal>
+        <div>Delete all the todo items?</div>
+        <button data-close-modal class="dialogButton">OK</button>
+        <button data-cancel-modal class="dialogButton">Cancel</button>
+    </dialog>
     <main>
         <section class="newItemEntry">
             <form class="newItemEntry__form" id="new-task-form">

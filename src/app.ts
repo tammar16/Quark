@@ -4,13 +4,45 @@ type Task = {
     completed: boolean
     createdAt: Date
   }
+
+  const closeButton = document.querySelector("[data-close-modal]")!
+  const cancelButton = document.querySelector("[data-cancel-modal]")!
+  const modal = document.querySelector("[data-modal]") as HTMLDialogElement
+
+
   
   const list = document.querySelector<HTMLUListElement>("#list")!
   const form = document.getElementById("new-task-form") as HTMLFormElement | null
   const input = document.querySelector<HTMLInputElement>("#new-task-title")
   let tasks: Task[] = loadTasks()
   updateTaskUI()
-  
+ 
+  closeButton.addEventListener("click", () => {
+    tasks = []
+    updateTaskUI()
+    saveTasks()
+    modal.close();
+    input?.focus()
+  })
+
+  cancelButton.addEventListener("click", () => { 
+    modal.close()
+    input?.focus()  
+  })
+
+  modal.addEventListener("click", e => {
+    const dialogDimensions = modal.getBoundingClientRect()
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      modal.close()
+    }
+  }) 
+
+
   form?.addEventListener("submit", e => {
     e.preventDefault()
   
@@ -34,10 +66,22 @@ type Task = {
 const clearItems = document.getElementById("clearItemsButton") as HTMLButtonElement
 
 clearItems.addEventListener('click', (): void => {
-    tasks = []
-    updateTaskUI()
-    saveTasks()
+
+  getFile()
+  
+  modal.showModal()
 })
+
+// https://developer.mozilla.org/en-US/docs/Web/API/File_System_API
+// https://bobbyhadz.com/blog/typescript-property-does-not-exist-on-type-window
+async function getFile() {
+  // Open file picker and destructure the result the first handle
+  const [fileHandle] = await (window as any).showOpenFilePicker();
+  const file = await fileHandle.getFile();
+  console.log(file)
+  return file;
+}
+
 
   function nextId(): number {
     return tasks.reduce((i, t) => Math.max(t.id, i), 0) + 1
@@ -63,7 +107,7 @@ clearItems.addEventListener('click', (): void => {
 
     const button = document.createElement("button") as HTMLButtonElement
     button.className = 'button'
-    button.textContent = 'X' // '\uD83D\uDDD1'
+    button.textContent = "\u00D7" // '\uD83D\uDDD1'
 
     button.addEventListener('click', () => {
         deleteTask(task.id)
