@@ -1,24 +1,38 @@
+// Domain Model
 type Task = {
-    id: number
-    title: string
-    completed: boolean
-    createdAt: Date
-  }
+  id: number
+  title: string
+  completed: boolean
+  createdAt: Date
+}
+
+type TaskList = {
+  title: string
+  tasks: Task[]
+}
+
+type TaskListGroup = {
+  title: string
+  taskLists: TaskList[]
+}
+
+// Model
+let taskListGroup: TaskListGroup = loadTasks()
+
+
+
 
   const closeButton = document.querySelector("[data-close-modal]")!
   const cancelButton = document.querySelector("[data-cancel-modal]")!
   const modal = document.querySelector("[data-modal]") as HTMLDialogElement
 
-
-  
   const list = document.querySelector<HTMLUListElement>("#list")!
   const form = document.getElementById("new-task-form") as HTMLFormElement | null
   const input = document.querySelector<HTMLInputElement>("#new-task-title")
-  let tasks: Task[] = loadTasks()
   updateTaskUI()
  
   closeButton.addEventListener("click", () => {
-    tasks = []
+    currentTaskList().tasks = []
     updateTaskUI()
     saveTasks()
     modal.close();
@@ -54,7 +68,7 @@ type Task = {
       completed: false,
       createdAt: new Date(),
     }
-    tasks.push(newTask)
+    currentTaskList().tasks.push(newTask)
     saveTasks()
   
     addListItem(newTask)
@@ -65,26 +79,65 @@ type Task = {
 // Add listener to "Clear" button
 const clearItems = document.getElementById("clearItemsButton") as HTMLButtonElement
 
-clearItems.addEventListener('click', (): void => {
-
-  getFile()
-  
+clearItems.addEventListener('click', (): void => {  
   modal.showModal()
 })
 
+const openButton = document.querySelector("[data-open-button]")!
+const saveButton = document.querySelector("[data-save-button]") as HTMLButtonElement
+const saveasButton = document.querySelector("[data-saveas-button]")!
+
+openButton.addEventListener("click", async () => { 
+  let text = await getFile()
+  taskListGroup = JSON.parse(text)
+  saveTasks()
+  updateTaskUI()
+})
+
+saveButton.addEventListener("click", () => { 
+  save(JSON.stringify(taskListGroup))
+})
+
+saveasButton.addEventListener("click", () => { 
+  saveAs(JSON.stringify(taskListGroup))
+})
+
+// References
+// ----------
 // https://developer.mozilla.org/en-US/docs/Web/API/File_System_API
 // https://bobbyhadz.com/blog/typescript-property-does-not-exist-on-type-window
+// https://developer.chrome.com/docs/capabilities/web-apis/file-system-access
+// https://www.youtube.com/watch?v=8EcBJV0sOSU&t=183s
+// https://stackoverflow.com/questions/71309058/property-showsavefilepicker-does-not-exist-on-type-window-typeof-globalthis
+
+let fileHandle: FileSystemFileHandle
+
 async function getFile() {
   // Open file picker and destructure the result the first handle
-  const [fileHandle] = await (window as any).showOpenFilePicker();
-  const file = await fileHandle.getFile();
-  console.log(file)
-  return file;
+  [fileHandle] = await window.showOpenFilePicker()
+  saveButton.disabled = false
+  const file = await fileHandle.getFile()
+  const contents = await file.text()
+  return contents;
+}
+
+async function save(text: string) {
+
+  if (fileHandle === undefined) return
+
+  let stream = await fileHandle.createWritable();
+  await stream.write(text)
+  await stream.close();
+}
+
+async function saveAs(text: string) {
+  fileHandle = await window.showSaveFilePicker();
+  save(text);
 }
 
 
   function nextId(): number {
-    return tasks.reduce((i, t) => Math.max(t.id, i), 0) + 1
+    return currentTaskList().tasks.reduce((i, t) => Math.max(t.id, i), 0) + 1
   }
   
   function addListItem(task: Task) {
@@ -120,22 +173,39 @@ async function getFile() {
   }
 
   function deleteTask(taskId: number) {
-    tasks = tasks.filter(t => t.id !== taskId)
+    currentTaskList().tasks = currentTaskList().tasks.filter(t => t.id !== taskId)
+    console.log(taskListGroup)
     saveTasks()
     updateTaskUI()
   }
-  
-  function saveTasks() {
-    localStorage.setItem("TASKS", JSON.stringify(tasks))
+
+  function currentTaskList(){
+    return taskListGroup.taskLists[0]
   }
   
-  function loadTasks(): Task[] {
+  function saveTasks() {
+    localStorage.setItem("TASKS", JSON.stringify(taskListGroup))
+  }
+  
+  function loadTasks(): TaskListGroup {
     const taskJSON = localStorage.getItem("TASKS")
-    if (taskJSON == null) return []
+    if (taskJSON == null){
+
+      let taskList: TaskList = {
+        title: "Task List",
+        tasks: []
+      }
+
+      let tlg: TaskListGroup = {
+        title: "Task List Group",
+        taskLists: [taskList]
+      }
+      return tlg
+    } 
     return JSON.parse(taskJSON)
   }
   
   function updateTaskUI() {
     list.innerHTML = ''
-    tasks.forEach(addListItem)
+    currentTaskList().tasks.forEach(addListItem)
   }
