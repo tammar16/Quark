@@ -95,11 +95,11 @@ openButton.addEventListener("click", async () => {
 })
 
 saveButton.addEventListener("click", () => { 
-  save(JSON.stringify(taskListGroup))
+  save(JSON.stringify(taskListGroup, null, 2))
 })
 
 saveasButton.addEventListener("click", () => { 
-  saveAs(JSON.stringify(taskListGroup))
+  saveAs(JSON.stringify(taskListGroup, null, 2))
 })
 
 // References
@@ -184,7 +184,7 @@ async function saveAs(text: string) {
   }
   
   function saveTasks() {
-    localStorage.setItem("TASKS", JSON.stringify(taskListGroup))
+    localStorage.setItem("TASKS", JSON.stringify(taskListGroup, null, 2))
   }
   
   function loadTasks(): TaskListGroup {

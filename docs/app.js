@@ -67,10 +67,10 @@ openButton.addEventListener("click", () => __awaiter(void 0, void 0, void 0, fun
     updateTaskUI();
 }));
 saveButton.addEventListener("click", () => {
-    save(JSON.stringify(taskListGroup));
+    save(JSON.stringify(taskListGroup, null, 2));
 });
 saveasButton.addEventListener("click", () => {
-    saveAs(JSON.stringify(taskListGroup));
+    saveAs(JSON.stringify(taskListGroup, null, 2));
 });
 // References
 // ----------
@@ -143,7 +143,7 @@ function currentTaskList() {
     return taskListGroup.taskLists[0];
 }
 function saveTasks() {
-    localStorage.setItem("TASKS", JSON.stringify(taskListGroup));
+    localStorage.setItem("TASKS", JSON.stringify(taskListGroup, null, 2));
 }
 function loadTasks() {
     const taskJSON = localStorage.getItem("TASKS");
