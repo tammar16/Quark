@@ -176,20 +176,19 @@ function saveTasks() {
     localStorage.setItem("TASKS", JSON.stringify(taskListGroup, null, 2));
 }
 function loadTasks() {
-    //const taskJSON = localStorage.getItem("TASKS")
-    //if (taskJSON == null)
-    //{
-    let taskList = {
-        title: "Task List",
-        tasks: []
-    };
-    let tlg = {
-        title: "Task List Group",
-        taskLists: [taskList]
-    };
-    return tlg;
-    //} 
-    //return JSON.parse(taskJSON)
+    const taskJSON = localStorage.getItem("TASKS");
+    if (taskJSON == null) {
+        let taskList = {
+            title: "Task List",
+            tasks: []
+        };
+        let tlg = {
+            title: "Task List Group",
+            taskLists: [taskList]
+        };
+        return tlg;
+    }
+    return JSON.parse(taskJSON);
 }
 function updateTaskUI() {
     list.innerHTML = '';
