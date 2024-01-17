@@ -223,8 +223,9 @@ async function saveAs(text: string) {
   }
   
   function loadTasks(): TaskListGroup {
-    const taskJSON = localStorage.getItem("TASKS")
-    if (taskJSON == null){
+    //const taskJSON = localStorage.getItem("TASKS")
+    //if (taskJSON == null)
+    //{
 
       let taskList: TaskList = {
         title: "Task List",
@@ -236,8 +237,8 @@ async function saveAs(text: string) {
         taskLists: [taskList]
       }
       return tlg
-    } 
-    return JSON.parse(taskJSON)
+    //} 
+    //return JSON.parse(taskJSON)
   }
   
   function updateTaskUI() {
