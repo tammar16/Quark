@@ -132,6 +132,7 @@ async function save(text: string) {
 
 async function saveAs(text: string) {
   fileHandle = await window.showSaveFilePicker();
+  saveButton.disabled = false
   save(text);
 }
 

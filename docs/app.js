@@ -102,6 +102,7 @@ function save(text) {
 function saveAs(text) {
     return __awaiter(this, void 0, void 0, function* () {
         fileHandle = yield window.showSaveFilePicker();
+        saveButton.disabled = false;
         save(text);
     });
 }
