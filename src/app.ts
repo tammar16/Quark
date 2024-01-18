@@ -131,6 +131,7 @@ saveasButton.addEventListener("click", () => {
 
 // References
 // ----------
+// npm install --save-dev @types/wicg-file-system-access
 // https://developer.mozilla.org/en-US/docs/Web/API/File_System_API
 // https://bobbyhadz.com/blog/typescript-property-does-not-exist-on-type-window
 // https://developer.chrome.com/docs/capabilities/web-apis/file-system-access
