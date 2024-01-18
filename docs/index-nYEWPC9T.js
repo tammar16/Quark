@@ -16,6 +16,7 @@
 <section class="listContainer">
     <header class="listTitle">
         <h2 id="listName">List</h2>
+        <div>
         <button id="clearItemsButton" class="button listTitle__button" title="Clear the list"
           aria-label="Remove all items from the list">
           Clear All
@@ -23,6 +24,7 @@
         <button data-open-button class="button">Open</button>
         <button data-save-button class="button" disabled>Save</button>
         <button data-saveas-button class="button">SaveAs</button>
+        </div>
       </header>
       <hr />
     <ul id="list"></ul>
