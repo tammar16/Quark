@@ -23,35 +23,35 @@ let taskListGroup: TaskListGroup = loadTasks()
 
 
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<main>
-<dialog data-modal>
-    <div>Delete all the todo items?</div>
-    <button data-close-modal class="dialogButton">OK</button>
-    <button data-cancel-modal class="dialogButton">Cancel</button>
-</dialog>
-<section class="newItemEntry">
-    <form class="newItemEntry__form" id="new-task-form">
-        <input class="newItemEntry__input" type="text" id="new-task-title">
-        <button class="button newItemEntry__button"  type="submit">Add</button>
-    </form>
-</section>
-<section class="listContainer">
-    <header class="listTitle">
-        <h2 id="listName">List</h2>
-        <button id="clearItemsButton" class="button listTitle__button" title="Clear the list"
-          aria-label="Remove all items from the list">
-          Clear All
-        </button>
-        <button data-open-button class="button">Open</button>
-        <button data-save-button class="button" disabled>Save</button>
-        <button data-saveas-button class="button">SaveAs</button>
-      </header>
-      <hr />
-    <ul id="list"></ul>
-</section>
-</main>
-`
+// document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+// <main>
+// <dialog data-modal>
+//     <div>Delete all the todo items?</div>
+//     <button data-close-modal class="dialogButton">OK</button>
+//     <button data-cancel-modal class="dialogButton">Cancel</button>
+// </dialog>
+// <section class="newItemEntry">
+//     <form class="newItemEntry__form" id="new-task-form">
+//         <input class="newItemEntry__input" type="text" id="new-task-title">
+//         <button class="button newItemEntry__button"  type="submit">Add</button>
+//     </form>
+// </section>
+// <section class="listContainer">
+//     <header class="listTitle">
+//         <h2 id="listName">List</h2>
+//         <button id="clearItemsButton" class="button listTitle__button" title="Clear the list"
+//           aria-label="Remove all items from the list">
+//           Clear All
+//         </button>
+//         <button data-open-button class="button">Open</button>
+//         <button data-save-button class="button" disabled>Save</button>
+//         <button data-saveas-button class="button">SaveAs</button>
+//       </header>
+//       <hr />
+//     <ul id="list"></ul>
+// </section>
+// </main>
+// `
 
 
 
