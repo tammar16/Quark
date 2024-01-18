@@ -16,6 +16,8 @@ type TaskListGroup = {
   taskLists: TaskList[]
 }
 
+export function init() {
+
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <main>
 <dialog data-modal>
@@ -46,6 +48,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 </main>
 `
 
+
 // Model
 let taskListGroup: TaskListGroup = loadTasks()
 
@@ -56,7 +59,8 @@ let taskListGroup: TaskListGroup = loadTasks()
   const list = document.querySelector<HTMLUListElement>("#list")!
   const form = document.getElementById("new-task-form") as HTMLFormElement | null
   const input = document.querySelector<HTMLInputElement>("#new-task-title")
-  updateTaskUI()
+  
+ updateTaskUI()
  
   closeButton.addEventListener("click", () => {
     currentTaskList().tasks = []
@@ -238,3 +242,5 @@ async function saveAs(text: string) {
     list.innerHTML = ''
     currentTaskList().tasks.forEach(addListItem)
   }
+
+}
