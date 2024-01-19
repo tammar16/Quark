@@ -1,3 +1,6 @@
+import { Observable, fromEvent } from "rxjs";
+//import { Observable } from 'rxjs/Rx'
+
 // Domain Model
 type Task = {
   id: number
@@ -72,10 +75,24 @@ let taskListGroup: TaskListGroup = loadTasks()
     input?.focus()
   })
 
-  cancelButton.addEventListener("click", () => { 
+
+// References for RxJS
+// https://blog.logrocket.com/using-observables-transform-data-typescript/
+// https://rxjs.dev/api/index/function/fromEvent
+
+  const clicksfromCancelButton = fromEvent(cancelButton, 'click')
+  
+  clicksfromCancelButton.subscribe(() => 
+  {
+    console.log('Clicked!')
     modal.close()
     input?.focus()  
-  })
+  });
+
+  // cancelButton.addEventListener("click", () => { 
+  //   modal.close()
+  //   input?.focus()  
+  // })
 
   modal.addEventListener("click", e => {
     const dialogDimensions = modal.getBoundingClientRect()
