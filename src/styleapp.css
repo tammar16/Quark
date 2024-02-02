@@ -2,11 +2,11 @@ html {
     font-family: Arial, Helvetica, sans-serif;
 } 
 
-/* * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}  */
+} 
 
 dialog::backdrop {
     background-color: #333A;
@@ -117,7 +117,7 @@ main {
 .listTitle {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .listTitle__button {
@@ -138,7 +138,7 @@ main {
 .item {
     display: flex;
     align-items: center;
-    padding-top: 1em;
+    padding-top: 0.25em;
     gap: 1em;
 }
 
