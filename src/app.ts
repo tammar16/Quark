@@ -1,4 +1,4 @@
-import { Observable, fromEvent } from "rxjs";
+import { fromEvent } from "rxjs";
 //import { Observable } from 'rxjs/Rx'
 
 // Domain Model
