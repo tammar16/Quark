@@ -16,6 +16,7 @@ dialog::backdrop {
 .dialogButton {
     margin: 1rem;
     padding: 1.0rem;
+    border-radius: 0rem;
 }
 
 hr {
@@ -25,14 +26,30 @@ hr {
 dialog {
     z-index: 10;
     /* margin-top: 10px; */
-    background: green;
+    background: #666;
     border: none;
     border-radius: 0.5rem;
+  }
+
+  .dialogwrapper {
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    "message  message"
+    "okay  cancel";
+  }
+
+  .dialogmessage {
+    grid-area: message;
+    align-self: center;
   }
 
 input, 
 button {
     font: inherit;
+    background-color: #555;
 }
 
 body {

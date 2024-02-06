@@ -24,9 +24,11 @@ export function init() {
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <main>
 <dialog data-modal>
-    <div>Delete all the todo items?</div>
+  <div class="dialogwrapper">
+    <div class="dialogmessage">Delete all the todo items?</div>
     <button data-close-modal class="dialogButton">OK</button>
     <button data-cancel-modal class="dialogButton">Cancel</button>
+    </div>
 </dialog>
 <section class="newItemEntry">
     <form class="newItemEntry__form" id="new-task-form">
