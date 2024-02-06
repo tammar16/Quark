@@ -1,9 +1,19 @@
 export default {
   // root: 'src',
+  base: "./",
   build: {
     outDir: 'docs'
   }
 }
+
+// https://github.com/vitejs/vite/discussions/5081
+//
+// import { defineConfig } from "vite";
+// // https://vitejs.dev/config/
+// export default defineConfig({
+//   base: "./",
+//   // your other configuration...
+// });
 
 
 // import path from 'path'
