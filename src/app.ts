@@ -1,23 +1,6 @@
+import { TaskListGroup, TaskList, Task } from "./tasklistModel.ts"
 import { fromEvent } from "rxjs";
 //import { Observable } from 'rxjs/Rx'
-
-// Domain Model
-type Task = {
-  id: number
-  title: string
-  completed: boolean
-  createdAt: Date
-}
-
-type TaskList = {
-  title: string
-  tasks: Task[]
-}
-
-type TaskListGroup = {
-  title: string
-  taskLists: TaskList[]
-}
 
 export function init() {
 
