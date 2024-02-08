@@ -1,11 +1,13 @@
 import { TaskListGroup, TaskList, Task } from "./tasklistModel.ts"
 import { fromEvent } from "rxjs";
+import './omron-tag.ts'
 //import { Observable } from 'rxjs/Rx'
 
 export function init() {
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <main>
+<omron-tag></omron-tag>
 <dialog data-modal>
   <div class="dialogwrapper">
     <div class="dialogmessage">Delete all the todo items?</div>
