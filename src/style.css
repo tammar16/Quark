@@ -24,8 +24,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  /* display: flex; */
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -93,4 +93,31 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'header header header'
+    'main main main'
+    'footer footer footer';
+}
+
+.title {
+  grid-area: header;
+  justify-self: stretch;
+  font-size: 3rem;
+  background-color: #535bf2;
+}
+
+.nav {
+  grid-area: main;
+  align-self: stretch;
+  justify-self: left;
+}
+
+.todo {
+  grid-area: footer;
 }

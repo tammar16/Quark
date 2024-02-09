@@ -7,7 +7,11 @@ import { of, Observable } from "rxjs";
 import './app.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<todo-list></todo-list>
+<div class="wrapper">
+  <div class="title">Quark</div>
+  <nav class="nav"><button>Home</button><button>Todo</button></nav>
+  <todo-list class="todo"></todo-list>
+</div>
 `
 
 const emitter : Observable<string> = of("Sam", "Ray", "Thomas");
