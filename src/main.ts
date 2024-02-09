@@ -4,7 +4,11 @@ import './styleapp.css'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.ts'
 import { of, Observable } from "rxjs"; 
-import { init } from './app.ts'
+import './app.ts'
+
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+<todo-list></todo-list>
+`
 
 const emitter : Observable<string> = of("Sam", "Ray", "Thomas");
 
@@ -16,8 +20,6 @@ emitter.subscribe((value: string) => {
   // div.innerHTML = value
 //  body.appendChild(div)
 })
-
-init()
 
 // document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 //   <div>
