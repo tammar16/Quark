@@ -1,11 +1,213 @@
 import { TaskListGroup, TaskList, Task } from "./tasklistModel.ts"
 import { fromEvent } from "rxjs";
 import './omron-tag.ts'
+// import './styleapp.css'
 //import { Observable } from 'rxjs/Rx'
 
 const template = document.createElement(`template`);
 template.innerHTML = `
-<link rel="stylesheet" href="./src/styleapp.css">
+
+<style>
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+} 
+
+html, body, div, input, ul, li {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
+
+dialog::backdrop {
+  background-color: #333A;
+}
+
+.dialogButton {
+  margin: 1rem;
+  padding: 1.0rem;
+  border-radius: 0rem;
+}
+
+hr {
+  margin: 0;
+}
+
+dialog {
+  z-index: 10;
+  /* margin-top: 10px; */
+  background: #666;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.dialogwrapper {
+  font-size: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+  "message  message"
+  "okay  cancel";
+}
+
+.dialogmessage {
+  grid-area: message;
+  align-self: center;
+}
+
+input, 
+button {
+  font: inherit;
+  background-color: #555;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+main {
+  flex-grow: 1;
+  margin: auto;
+  width: 100%;
+  /* max-width: 800px; */
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/* #list {
+  list-style: none;
+  padding: 0;
+} */
+
+section {
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.button {
+  border-radius: 2px;
+  padding: 5px;
+  /* min-width: 48px;
+  min-height: 48px; */
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.newItemEntry {
+  position: sticky;
+  top: 0;
+  margin-bottom: 1rem;
+}
+
+.newItemEntry__form {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.newItemEntry__input {
+  width: calc(100% - (0.25rem + 48px));
+  flex-grow: 1;
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  padding: 0.5em;
+}
+
+.newItemEntry__button {
+  background-color: transparent;
+  color: whitesmoke;
+  border: 3px dashed whitesmoke;
+  padding: 0.75em;
+}
+
+.newItemEntry__button:hover,
+.newItemEntry__button:focus {
+  color: limegreen;
+}
+
+.listContainer {
+  font-size: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+.listTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.listTitle__button {
+  /* background-color: transparent; */
+  color: whitesmoke;
+  /* padding: 0.25em; */
+}
+
+
+.listItems {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  list-style-type: none;
+}
+
+
+.item {
+  display: flex;
+  align-items: center;
+  padding-top: 0.25em;
+  gap: 1em;
+}
+
+.item > input[type="checkbox"] {
+  text-align: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  cursor: pointer;
+}
+
+.item > input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+}
+
+.item > label {
+  flex-grow: 1;
+  word-break: break-all;
+}
+
+.item > button:hover, 
+.item > button:focus {
+  color: red;
+}
+
+.listTitle__button:hover, 
+.listTitle__button:focus {
+  color: red;
+}
+
+@media (min-width: 768px) {
+  section {
+      padding: 1rem;
+  }
+  .newItemEntry__form {
+      gap: 0.5rem;
+  }
+}
+</style>
+
+
+
 <main>
 <omron-tag></omron-tag>
 <dialog data-modal>
