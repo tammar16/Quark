@@ -142,7 +142,7 @@ button:focus-visible {
 
 .todo {
   grid-area: footer;
-  margin-top: 1rem;
+  margin: 1rem;
 }
 
 .nav > button {
