@@ -209,7 +209,7 @@ section {
 
 
 <main>
-<omron-tag></omron-tag>
+<!-- <omron-tag></omron-tag>*/ -->
 <dialog data-modal>
   <div class="dialogwrapper">
     <div class="dialogmessage">Delete all the todo items?</div>

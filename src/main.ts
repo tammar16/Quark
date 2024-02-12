@@ -8,8 +8,11 @@ import './app.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div class="wrapper">
-  <div class="title">Quark</div>
-  <nav class="nav"><button>Home</button><button>Todo</button></nav>
+  <div class="title"></div>
+  <nav class="nav">
+    <button>Home</button>
+    <button>Todo</button>
+  </nav>
   <todo-list class="todo"></todo-list>
 </div>
 `

@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+} 
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -97,27 +102,36 @@ button:focus-visible {
 
 .wrapper{
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
     'header header header'
     'main main main'
-    'footer footer footer';
+    'empty1 footer empty2';
 }
 
 .title {
   grid-area: header;
   justify-self: stretch;
   font-size: 3rem;
-  background-color: #535bf2;
+  background-color: blue;
+  padding: 0.25rem;
 }
 
 .nav {
   grid-area: main;
   align-self: stretch;
-  justify-self: left;
+  justify-self: stretch;
+  padding: 0.5rem;
+  background-color: blue;
+  display: flex;
 }
 
 .todo {
   grid-area: footer;
+  margin-top: 1rem;
+}
+
+.nav > button {
+  margin: 0.5rem;
 }
