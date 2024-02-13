@@ -3,15 +3,15 @@ import './style.css'
 // import typescriptLogo from './typescript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.ts'
-import { of, Observable } from "rxjs"; 
+import { of, Observable, fromEvent } from "rxjs"; 
 import './app.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div class="wrapper">
   <div class="title"></div>
   <nav class="nav">
-    <button>Home</button>
-    <button>Todo</button>
+    <button data-home class="active navbutton">Home</button>
+    <button data-todo class="navbutton">Todo</button>
   </nav>
   <todo-list class="todo"></todo-list>
 </div>
@@ -27,6 +27,19 @@ emitter.subscribe((value: string) => {
   // div.innerHTML = value
 //  body.appendChild(div)
 })
+
+const homeButton = document.querySelector("[data-home]")!
+const clicksfromHomeButton = fromEvent(homeButton, 'click')
+clicksfromHomeButton.subscribe(() => {
+  console.log('Home Clicked!')
+});
+
+const todoButton = document.querySelector("[data-todo]")!
+const clicksfromTodoButton = fromEvent(todoButton, 'click')
+clicksfromTodoButton.subscribe(() => {
+  console.log('Todo Clicked!')
+});
+
 
 // document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 //   <div>
