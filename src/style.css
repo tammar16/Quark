@@ -143,6 +143,7 @@ button:focus-visible {
 .todo {
   grid-area: footer;
   margin: 1rem;
+
 }
 
 .navbutton {
@@ -159,6 +160,13 @@ button:focus-visible {
 .active {
   background-color: #04AA6D;
 }
+
 .active:hover {
   background-color: #04AA6D;
+}
+
+.homepage {
+  font-size: 3rem;  
+  justify-self: center;
+  align-self: center;
 }

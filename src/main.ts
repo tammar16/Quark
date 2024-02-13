@@ -13,7 +13,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <button data-home class="active navbutton">Home</button>
     <button data-todo class="navbutton">Todo</button>
   </nav>
-  <todo-list class="todo"></todo-list>
+  <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
+  <todo-list data-todolist class="todo"></todo-list>
 </div>
 `
 
@@ -28,16 +29,29 @@ emitter.subscribe((value: string) => {
 //  body.appendChild(div)
 })
 
+const todolist = document.querySelector("[data-todolist]") as HTMLElement
+const homepage = document.querySelector("[data-homepage]") as HTMLElement
+todolist.style.display = 'none'
+
 const homeButton = document.querySelector("[data-home]")!
+const todoButton = document.querySelector("[data-todo]")!
+
 const clicksfromHomeButton = fromEvent(homeButton, 'click')
 clicksfromHomeButton.subscribe(() => {
   console.log('Home Clicked!')
+  homepage.style.display = todolist.style.display
+  todolist.style.display = 'none'
+  homeButton.classList.add('active')
+  todoButton.classList.remove('active')
 });
 
-const todoButton = document.querySelector("[data-todo]")!
 const clicksfromTodoButton = fromEvent(todoButton, 'click')
 clicksfromTodoButton.subscribe(() => {
   console.log('Todo Clicked!')
+  todolist.style.display = homepage.style.display
+  homepage.style.display = 'none'
+  homeButton.classList.remove('active')
+  todoButton.classList.add('active')
 });
 
 
