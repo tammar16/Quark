@@ -39,6 +39,7 @@ const todoButton = document.querySelector("[data-todo]")!
 const clicksfromHomeButton = fromEvent(homeButton, 'click')
 clicksfromHomeButton.subscribe(() => {
   console.log('Home Clicked!')
+  if (homeButton.classList.contains('active')) return
   homepage.style.display = todolist.style.display
   todolist.style.display = 'none'
   homeButton.classList.add('active')
@@ -48,6 +49,7 @@ clicksfromHomeButton.subscribe(() => {
 const clicksfromTodoButton = fromEvent(todoButton, 'click')
 clicksfromTodoButton.subscribe(() => {
   console.log('Todo Clicked!')
+  if (todoButton.classList.contains('active')) return
   todolist.style.display = homepage.style.display
   homepage.style.display = 'none'
   homeButton.classList.remove('active')

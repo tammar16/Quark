@@ -92,14 +92,17 @@ section {
 }
 
 .button {
-  border-radius: 2px;
+  border-width: 0px;
+  /*border-radius: 2px;*/
   padding: 5px;
+  margin: 2px;
   /* min-width: 48px;
   min-height: 48px; */
 }
 
 .button:hover {
   cursor: pointer;
+  background-color: #AAA;
 }
 
 .newItemEntry {
@@ -144,7 +147,7 @@ section {
 
 .listTitle {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
 }
 
@@ -191,10 +194,10 @@ section {
   color: red;
 }
 
-.listTitle__button:hover, 
+/*.listTitle__button:hover, 
 .listTitle__button:focus {
   color: red;
-}
+}*/
 
 @media (min-width: 768px) {
   section {
@@ -225,16 +228,10 @@ section {
 </section>
 <section class="listContainer">
     <header class="listTitle">
-        
-        
-        <button id="clearItemsButton" class="button listTitle__button" title="Clear the list"
-          aria-label="Remove all items from the list">
-          Clear All
-        </button>
+        <button id="clearItemsButton" class="button listTitle__button" title="Clear the list" aria-label="Remove all items from the list">Clear All</button>
         <button data-open-button class="button">Open</button>
         <button data-save-button class="button" disabled>Save</button>
         <button data-saveas-button class="button">SaveAs</button>
-        
       </header>
       <hr />
     <ul id="list"></ul>
