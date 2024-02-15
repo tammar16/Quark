@@ -149,9 +149,14 @@ section {
 }
 
 .listTitle {
+
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+/*
   display: flex;
   justify-content: left;
-  align-items: center;
+  align-items: center;*/
 }
 
 .listTitle__button {

@@ -473,3 +473,14 @@ class TodoListComponent extends HTMLElement {
 }
 
 customElements.define(`todo-list`, TodoListComponent);
+
+
+
+// -- References --
+// -- CSS Grid --
+// https://stackoverflow.com/questions/43129360/css-grid-wrapping
+// https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/#:~:text=auto-fill%20FILLS%20the%20row%20with%20as%20many%20columns,still%20occupy%20a%20designated%20space%20in%20the%20row.
+// 
+// -- Web Components --
+// https://www.youtube.com/watch?v=kHCpmBXZJ1g
+// 
