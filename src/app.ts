@@ -170,6 +170,12 @@ section {
   list-style-type: none;
 }
 
+#list {
+  
+  overflow-y: auto;
+
+}
+
 
 .item {
   display: flex;

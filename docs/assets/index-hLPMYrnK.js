@@ -173,6 +173,12 @@ section {
   list-style-type: none;
 }
 
+#list {
+  
+  overflow-y: auto;
+
+}
+
 
 .item {
   display: flex;
@@ -252,7 +258,9 @@ section {
     <button data-home class="active navbutton">Home</button>
     <button data-todo class="navbutton">Todo</button>
   </nav>
-  <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
-  <todo-list data-todolist class="todo"></todo-list>
+  <div class='main'>
+    <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
+    <todo-list data-todolist class="todo"></todo-list>
+  </div>
 </div>
 `;const le=Vt("Sam","Ray","Thomas");le.subscribe(t=>{console.log(`Name: ${t}`)});const P=document.querySelector("[data-todolist]"),F=document.querySelector("[data-homepage]");P.style.display="none";const B=document.querySelector("[data-home]"),R=document.querySelector("[data-todo]"),fe=I(B,"click");fe.subscribe(()=>{console.log("Home Clicked!"),!B.classList.contains("active")&&(F.style.display=P.style.display,P.style.display="none",B.classList.add("active"),R.classList.remove("active"))});const de=I(R,"click");de.subscribe(()=>{console.log("Todo Clicked!"),!R.classList.contains("active")&&(P.style.display=F.style.display,F.style.display="none",B.classList.remove("active"),R.classList.add("active"))});

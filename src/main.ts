@@ -13,8 +13,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <button data-home class="active navbutton">Home</button>
     <button data-todo class="navbutton">Todo</button>
   </nav>
-  <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
-  <todo-list data-todolist class="todo"></todo-list>
+  <div class='main'>
+    <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
+    <todo-list data-todolist class="todo"></todo-list>
+  </div>
 </div>
 `
 
