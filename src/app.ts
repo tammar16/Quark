@@ -143,6 +143,7 @@ section {
   display: flex;
   flex-flow: column;
   gap: 1rem;
+  overflow-y: auto;
 }
 
 .listTitle {
@@ -169,13 +170,6 @@ section {
   flex-flow: column nowrap;
   list-style-type: none;
 }
-
-#list {
-  
-  overflow-y: auto;
-
-}
-
 
 .item {
   display: flex;
