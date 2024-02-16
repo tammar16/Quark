@@ -106,7 +106,7 @@ section {
 }
 
 .newItemEntry {
-  position: sticky;
+  /*position: sticky;*/
   top: 0;
   margin-bottom: 1rem;
 }
@@ -126,16 +126,17 @@ section {
 }
 
 .newItemEntry__button {
-  background-color: transparent;
+/*  background-color: transparent;
   color: whitesmoke;
-  border: 3px dashed whitesmoke;
+  border: 3px dashed whitesmoke;*/
   padding: 0.75em;
 }
 
+/*
 .newItemEntry__button:hover,
 .newItemEntry__button:focus {
   color: limegreen;
-}
+}*/
 
 .listContainer {
   font-size: 1.5rem;
@@ -143,7 +144,6 @@ section {
   display: flex;
   flex-flow: column;
   gap: 1rem;
-  overflow-y: auto;
 }
 
 .listTitle {
