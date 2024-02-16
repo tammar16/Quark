@@ -109,7 +109,7 @@ section {
 }
 
 .newItemEntry {
-  position: sticky;
+  /*position: sticky;*/
   top: 0;
   margin-bottom: 1rem;
 }
@@ -129,16 +129,17 @@ section {
 }
 
 .newItemEntry__button {
-  background-color: transparent;
+/*  background-color: transparent;
   color: whitesmoke;
-  border: 3px dashed whitesmoke;
+  border: 3px dashed whitesmoke;*/
   padding: 0.75em;
 }
 
+/*
 .newItemEntry__button:hover,
 .newItemEntry__button:focus {
   color: limegreen;
-}
+}*/
 
 .listContainer {
   font-size: 1.5rem;
@@ -172,13 +173,6 @@ section {
   flex-flow: column nowrap;
   list-style-type: none;
 }
-
-#list {
-  
-  overflow-y: auto;
-
-}
-
 
 .item {
   display: flex;
@@ -253,7 +247,6 @@ section {
 </main>
 `;class ce extends HTMLElement{constructor(){var r,i,o,s,u,c,a,f,p,d,m,v;super();y(this,"taskListGroup",this.loadTasks());y(this,"closeButton");y(this,"cancelButton");y(this,"modal");y(this,"list");y(this,"form");y(this,"input");y(this,"fileHandle",null);y(this,"openButton");y(this,"saveButton");y(this,"saveasButton");y(this,"clearItems");this.attachShadow({mode:"open"}),(r=this.shadowRoot)==null||r.appendChild(yt.content.cloneNode(!0)),this.closeButton=(i=this.shadowRoot)==null?void 0:i.querySelector("[data-close-modal]"),this.cancelButton=(o=this.shadowRoot)==null?void 0:o.querySelector("[data-cancel-modal]"),this.modal=(s=this.shadowRoot)==null?void 0:s.querySelector("[data-modal]"),this.list=(u=this.shadowRoot)==null?void 0:u.querySelector("#list"),this.form=(c=this.shadowRoot)==null?void 0:c.getElementById("new-task-form"),this.input=(a=this.shadowRoot)==null?void 0:a.querySelector("#new-task-title"),this.openButton=(f=this.shadowRoot)==null?void 0:f.querySelector("[data-open-button]"),this.saveButton=(p=this.shadowRoot)==null?void 0:p.querySelector("[data-save-button]"),this.saveasButton=(d=this.shadowRoot)==null?void 0:d.querySelector("[data-saveas-button]"),this.clearItems=(m=this.shadowRoot)==null?void 0:m.getElementById("clearItemsButton"),this.updateTaskUI(),this.closeButton.addEventListener("click",()=>{var l;this.currentTaskList().tasks=[],this.updateTaskUI(),this.saveTasks(),this.modal.close(),(l=this.input)==null||l.focus()}),I(this.cancelButton,"click").subscribe(()=>{var l;console.log("Clicked!"),this.modal.close(),(l=this.input)==null||l.focus()}),this.modal.addEventListener("click",l=>{const b=this.modal.getBoundingClientRect();(l.clientX<b.left||l.clientX>b.right||l.clientY<b.top||l.clientY>b.bottom)&&this.modal.close()}),(v=this.form)==null||v.addEventListener("submit",l=>{var w,S;if(l.preventDefault(),((w=this.input)==null?void 0:w.value)==""||((S=this.input)==null?void 0:S.value)==null)return;const b={id:this.nextId(),title:this.input.value,completed:!1,createdAt:new Date};this.currentTaskList().tasks.push(b),this.saveTasks(),this.addListItem(b),this.input.value=""}),this.clearItems.addEventListener("click",()=>{this.modal.showModal()}),this.openButton.addEventListener("click",async()=>{let l=await this.getFile();this.taskListGroup=JSON.parse(l),this.saveTasks(),this.updateTaskUI()}),this.saveButton.addEventListener("click",()=>{this.save(JSON.stringify(this.taskListGroup,null,2))}),this.saveasButton.addEventListener("click",()=>{this.saveAs(JSON.stringify(this.taskListGroup,null,2))})}async getFile(){return[this.fileHandle]=await window.showOpenFilePicker(),this.saveButton.disabled=!1,await(await this.fileHandle.getFile()).text()}async save(e){var i;if(this.fileHandle===void 0)return;let r=await((i=this.fileHandle)==null?void 0:i.createWritable());await(r==null?void 0:r.write(e)),await(r==null?void 0:r.close())}async saveAs(e){console.log("saveas"),this.fileHandle=await window.showSaveFilePicker(),this.saveButton.disabled=!1,this.save(e)}nextId(){return this.currentTaskList().tasks.reduce((e,r)=>Math.max(r.id,e),0)+1}addListItem(e){const r=document.createElement("li");r.className="item";const i=document.createElement("input");i.id=e.id.toString(),i.addEventListener("change",()=>{e.completed=i.checked,this.saveTasks()}),i.type="checkbox",i.checked=e.completed;const o=document.createElement("label");o.textContent=e.title,o.htmlFor=e.id.toString();const s=document.createElement("button");s.className="button",s.textContent="×",s.addEventListener("click",()=>{this.deleteTask(e.id)}),r.append(i),r.append(o),r.append(s),this.list.append(r)}deleteTask(e){this.currentTaskList().tasks=this.currentTaskList().tasks.filter(r=>r.id!==e),console.log(this.taskListGroup),this.saveTasks(),this.updateTaskUI()}currentTaskList(){return this.taskListGroup.taskLists[0]}saveTasks(){localStorage.setItem("TASKS",JSON.stringify(this.taskListGroup,null,2))}loadTasks(){const e=localStorage.getItem("TASKS");return e==null?{title:"Task List Group",taskLists:[{title:"Task List",tasks:[]}]}:JSON.parse(e)}updateTaskUI(){this.list.innerHTML="",this.currentTaskList().tasks.forEach(e=>this.addListItem(e))}}customElements.define("todo-list",ce);document.querySelector("#app").innerHTML=`
 <div class="wrapper">
-  <div class="title"></div>
   <nav class="nav">
     <button data-home class="active navbutton">Home</button>
     <button data-todo class="navbutton">Todo</button>
