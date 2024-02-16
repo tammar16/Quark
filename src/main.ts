@@ -8,7 +8,6 @@ import './app.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div class="wrapper">
-  <div class="title"></div>
   <nav class="nav">
     <button data-home class="active navbutton">Home</button>
     <button data-todo class="navbutton">Todo</button>
