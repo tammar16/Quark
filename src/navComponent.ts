@@ -4,7 +4,7 @@ template.innerHTML = `
   <style>
     :host { display: inline-block; border: 2px solid red; }
     ::slotted(child-element) { background: lightgreen }
-    div { border:3px dashed rebeccapurple }
+    /*div { border:3px dashed rebeccapurple }*/
   </style>
   <div><slot name=child-elements></slot></div>
   <slot class="myslot"></slot>`
@@ -29,7 +29,7 @@ customElements.define('parent-element', class extends HTMLElement {
         console.log(s.getAttribute("navigationname"))
       });
 
-      (myslot.assignedElements()[1] as HTMLElement).style.display = "none"
+      //(myslot.assignedElements()[1] as HTMLElement).style.display = "none"
 
       // if (evt.target.name === '') {
       //   // Handle child elements within the default slot

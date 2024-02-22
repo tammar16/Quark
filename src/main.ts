@@ -13,7 +13,8 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <button data-home class="active navbutton">Home</button>
     <button data-todo class="navbutton">Todo</button>
   </nav>
-  <div class='main'>
+  <!-- <div> -->
+  <parent-element class='main'>
     <div data-homepage class="todo homepage">Welcome to the Quark Home Page!
       
     <!--
@@ -26,9 +27,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         -->
       <!--<child-element navigationname="Delta">Child 4 !!!</child-element>-->
 
-    </div>
-    <todo-list data-todolist class="todo"></todo-list>
-  </div>
+      </div>
+      <todo-list data-todolist class="todo"></todo-list>
+      </parent-element>
+      <!-- </div> -->
 </div>
 `
 
