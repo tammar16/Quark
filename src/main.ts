@@ -3,7 +3,8 @@ import './style.css'
 // import typescriptLogo from './typescript.svg'
 // import viteLogo from '/vite.svg'
 // import { setupCounter } from './counter.ts'
-import { of, Observable, fromEvent } from "rxjs"; 
+import { of, Observable } from "rxjs"; 
+//import { of, Observable, fromEvent } from "rxjs"; 
 import './app.ts'
 import './navComponent.ts'
 

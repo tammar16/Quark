@@ -1,6 +1,6 @@
 
-const template = document.createElement(`template`)
-template.innerHTML = `
+const navtemplate = document.createElement(`template`)
+navtemplate.innerHTML = `
   <style>
     :host { display: inline-block; border: 2px solid rebeccapurple; }
     /*::slotted(child-element) { background: lightgreen }*/
@@ -14,10 +14,10 @@ customElements.define('parent-element', class extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
-    this.shadowRoot?.appendChild(template.content.cloneNode(true));
+    this.shadowRoot?.appendChild(navtemplate.content.cloneNode(true));
 
     // Listen for slot changes
-    this.shadowRoot?.addEventListener('slotchange', (evt: Event) => {
+    this.shadowRoot?.addEventListener('slotchange', () => {
 
       const myslot = this.shadowRoot?.querySelector('.myslot') as HTMLSlotElement
 
