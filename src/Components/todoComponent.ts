@@ -1,6 +1,6 @@
-import { TaskListGroup, TaskList, Task } from "./tasklistModel.ts"
+import { TaskListGroup, TaskList, Task } from "../tasklistModel.ts"
 import { fromEvent } from "rxjs";
-import './omron-tag.ts'
+import '../omron-tag.ts'
 // import './styleapp.css'
 //import { Observable } from 'rxjs/Rx'
 
