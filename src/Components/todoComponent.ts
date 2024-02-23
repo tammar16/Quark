@@ -5,7 +5,7 @@ import '../omron-tag.ts'
 //import { Observable } from 'rxjs/Rx'
 
 const template = document.createElement(`template`);
-template.innerHTML = `
+template.innerHTML = /*html*/ `
 
 <style>
 html {
@@ -484,3 +484,5 @@ customElements.define(`todo-list`, TodoListComponent);
 // -- Web Components --
 // https://www.youtube.com/watch?v=kHCpmBXZJ1g
 // 
+// Highlighting
+// https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html
