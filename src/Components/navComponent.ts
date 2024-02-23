@@ -40,7 +40,7 @@ class extends HTMLElement {
       button.addEventListener('click', (e: Event) => this.navButtonClicked(e.target as HTMLElement))
       i === 0 ? button.classList.add('active') : component.style.display = 'none'
       button.innerHTML = component.getAttribute("navigationname")!
-      document.querySelector<HTMLDivElement>('.nav')!.appendChild(button)
+      document.querySelector<HTMLDivElement>('navigation-bar')!.appendChild(button)
     })
   }
 
@@ -73,5 +73,11 @@ customElements.define('child-element', class extends HTMLElement {
 
   attributeChangedCallback(attrName: string, oldVal: string, newVal: string) {
     console.log(attrName, oldVal, newVal)
+  }
+})
+
+customElements.define('navigation-bar', class extends HTMLElement {
+  constructor() {
+    super()
   }
 })

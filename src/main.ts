@@ -5,8 +5,8 @@ import './Components/navComponent.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
 <div class="wrapper">
-  <nav class="nav">
-  </nav>
+  <navigation-bar class="nav">
+  </navigation-bar>
   <parent-element class='main'>
     <child-element navigationname="Home">
       <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
