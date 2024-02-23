@@ -2,8 +2,8 @@
 const template = document.createElement(`template`)
 template.innerHTML = `
   <style>
-    :host { display: inline-block; border: 2px solid red; }
-    ::slotted(child-element) { background: lightgreen }
+    :host { display: inline-block; border: 2px solid rebeccapurple; }
+    /*::slotted(child-element) { background: lightgreen }*/
     /*div { border:3px dashed rebeccapurple }*/
   </style>
   <div><slot name=child-elements></slot></div>
@@ -13,23 +13,46 @@ template.innerHTML = `
 customElements.define('parent-element', class extends HTMLElement {
   constructor() {
     super();
-    //this.attachShadow({ mode: 'open' }).append(document.getElementById(this.nodeName).content.cloneNode(true));
     this.attachShadow({ mode: 'open' });
     this.shadowRoot?.appendChild(template.content.cloneNode(true));
 
     // Listen for slot changes
     this.shadowRoot?.addEventListener('slotchange', (evt: Event) => {
 
-      console.log('slotchange event: ', evt)
-
       const myslot = this.shadowRoot?.querySelector('.myslot') as HTMLSlotElement
-      console.log(myslot.assignedElements())
 
-      myslot.assignedElements().forEach(s => {
-        console.log(s.getAttribute("navigationname"))
+      const nav = document.querySelector('.nav') as HTMLDivElement
+
+      const buttons: HTMLButtonElement[] = []
+      const elements: HTMLElement[] = []
+
+      myslot.assignedElements().forEach((s, i) => {
+        elements.push(s as HTMLElement)
+        if (s.getAttribute("navigationname") === null) return
+        const button = document.createElement('button')
+        buttons.push(button)
+        button.classList.add('navbutton')
+        button.addEventListener('click', (e: Event) => {
+            
+            const name = ((e.target) as HTMLElement).innerText
+            elements.forEach(ae => ae.style.display = 'none')
+            const elementswithname = elements.filter(ea => ea.getAttribute('navigationname') === name)
+            elementswithname[0].style.display = 'block'
+
+                buttons.forEach(b => {
+                    b.classList.remove('active')
+                });
+                (e.target as HTMLButtonElement).classList.add('active')
+        })
+        if (i === 0) {
+            button.classList.add('active')
+
+        } else {
+            (s as HTMLElement).style.display = 'none'
+        }
+        button.innerHTML = s.getAttribute("navigationname")!
+        nav.appendChild(button)
       });
-
-      //(myslot.assignedElements()[1] as HTMLElement).style.display = "none"
 
       // if (evt.target.name === '') {
       //   // Handle child elements within the default slot

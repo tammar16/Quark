@@ -10,25 +10,36 @@ import './navComponent.ts'
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <div class="wrapper">
   <nav class="nav">
+  <!--
     <button data-home class="active navbutton">Home</button>
     <button data-todo class="navbutton">Todo</button>
+  -->
   </nav>
   <!-- <div> -->
   <parent-element class='main'>
-    <div data-homepage class="todo homepage">Welcome to the Quark Home Page!
+    <child-element navigationname="Home">
+      <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
+    </child-element>
+    <child-element navigationname="Todo">
+      <todo-list data-todolist class="todo"></todo-list>
+    </child-element>
+    <child-element navigationname="About">
+      <div class="About">About Quark</div>
+    </child-element>
       
-    <!--
+      <!--
       <parent-element>
         <child-element navigationname="Alpha">Child 1</child-element>
         <child-element navigationname="Beta">Child 2</child-element>
         <b>Content</b>
         <div><child-element navigationname="Gamma" slot = 'child-elements'>Child 3 !!!</child-element></div>
         </parent-element>
-        -->
+      -->
       <!--<child-element navigationname="Delta">Child 4 !!!</child-element>-->
 
-      </div>
-      <todo-list data-todolist class="todo"></todo-list>
+      
+
+
       </parent-element>
       <!-- </div> -->
 </div>
@@ -45,6 +56,7 @@ emitter.subscribe((value: string) => {
 //  body.appendChild(div)
 })
 
+/*
 const todolist = document.querySelector("[data-todolist]") as HTMLElement
 const homepage = document.querySelector("[data-homepage]") as HTMLElement
 todolist.style.display = 'none'
@@ -71,7 +83,7 @@ clicksfromTodoButton.subscribe(() => {
   homeButton.classList.remove('active')
   todoButton.classList.add('active')
 });
-
+*/
 
 // document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 //   <div>
