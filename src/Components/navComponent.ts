@@ -2,13 +2,13 @@ const navtemplate = document.createElement(`template`)
 navtemplate.innerHTML = /*html*/ `
   <style>
     :host { display: inline-block; border: 2px solid rebeccapurple; }
-    /*::slotted(child-element) { background: lightgreen }*/
+    /*::slotted(nav-content) { background: lightgreen }*/
     /*div { border:3px dashed rebeccapurple }*/
   </style>
-  <div><slot name=child-elements></slot></div>
+  <!--<div><slot name=child-elements></slot></div>-->
   <slot class="myslot"></slot>`
 
-customElements.define('parent-element', 
+customElements.define('nav-contenthost', 
 class extends HTMLElement {
 
   private buttons: HTMLButtonElement[] = []
@@ -40,7 +40,7 @@ class extends HTMLElement {
       button.addEventListener('click', (e: Event) => this.navButtonClicked(e.target as HTMLElement))
       i === 0 ? button.classList.add('active') : component.style.display = 'none'
       button.innerHTML = component.getAttribute("navigationname")!
-      document.querySelector<HTMLDivElement>('navigation-bar')!.appendChild(button)
+      document.querySelector<HTMLDivElement>('nav-header')!.appendChild(button)
     })
   }
 
@@ -53,7 +53,7 @@ class extends HTMLElement {
   }
 })
 
-customElements.define('child-element', class extends HTMLElement {
+customElements.define('nav-content', class extends HTMLElement {
   connectedCallback() {
     // parent = this.closest('parent-element')
   }
@@ -76,7 +76,7 @@ customElements.define('child-element', class extends HTMLElement {
   }
 })
 
-customElements.define('navigation-bar', class extends HTMLElement {
+customElements.define('nav-header', class extends HTMLElement {
   constructor() {
     super()
   }

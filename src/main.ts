@@ -5,19 +5,19 @@ import './Components/navComponent.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
 <div class="wrapper">
-  <navigation-bar class="nav">
-  </navigation-bar>
-  <parent-element class='main'>
-    <child-element navigationname="Home">
+  <nav-header class="nav">
+  </nav-header>
+  <nav-contenthost class='main'>
+    <nav-content navigationname="Home">
       <div data-homepage class="todo homepage">Welcome to the Quark Home Page!</div>
-    </child-element>
-    <child-element navigationname="Todo">
+    </nav-content>
+    <nav-content navigationname="Todo">
       <todo-list data-todolist class="todo"></todo-list>
-    </child-element>
-    <child-element navigationname="About">
+    </nav-content>
+    <nav-content navigationname="About">
       <div class="About">About Quark</div>
-    </child-element>
-  </parent-element>
+    </nav-content>
+  </nav-contenthost>
 </div>
 `
 
