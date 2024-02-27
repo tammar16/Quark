@@ -88,7 +88,9 @@ main {
 section {
 /*  border: 1px solid whitesmoke;
   border-radius: 10px;*/
-  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
 }
 
 .button {
@@ -174,7 +176,7 @@ section {
 .item {
   display: flex;
   align-items: center;
-  padding-top: 0.25em;
+  padding: 0.25em;
   gap: 1em;
 }
 
@@ -204,10 +206,15 @@ section {
   color: red;
 }*/
 
+li { background: #333; }
+li:nth-child(odd) { background: #444; }
+
 @media (min-width: 768px) {
-  section {
-      padding: 1rem;
-  }
+  /*section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }*/
   .newItemEntry__form {
       gap: 0.5rem;
   }
