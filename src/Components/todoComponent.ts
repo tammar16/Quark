@@ -86,8 +86,8 @@ main {
 } */
 
 section {
-  border: 1px solid whitesmoke;
-  border-radius: 10px;
+/*  border: 1px solid whitesmoke;
+  border-radius: 10px;*/
   padding: 0.5rem;
 }
 
@@ -105,11 +105,11 @@ section {
   background-color: #AAA;
 }
 
-.newItemEntry {
-  /*position: sticky;*/
+/*.newItemEntry {
+  position: sticky;
   top: 0;
   margin-bottom: 1rem;
-}
+}*/
 
 .newItemEntry__form {
   display: flex;
@@ -121,7 +121,7 @@ section {
   width: calc(100% - (0.25rem + 48px));
   flex-grow: 1;
   border: 2px solid whitesmoke;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
   padding: 0.5em;
 }
 
@@ -238,7 +238,6 @@ section {
         <button data-save-button class="button" disabled>Save</button>
         <button data-saveas-button class="button">SaveAs</button>
       </header>
-      <hr />
     <ul id="list"></ul>
 </section>
 </main>

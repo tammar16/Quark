@@ -1,7 +1,7 @@
 const navtemplate = document.createElement(`template`)
 navtemplate.innerHTML = /*html*/ `
   <style>
-    :host { display: inline-block; border: 2px solid rebeccapurple; }
+    /*:host { display: inline-block; border: 2px solid rebeccapurple; }*/
     /*::slotted(nav-content) { background: lightgreen }*/
     /*div { border:3px dashed rebeccapurple }*/
   </style>
