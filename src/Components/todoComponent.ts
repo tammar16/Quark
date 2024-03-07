@@ -201,13 +201,26 @@ section {
   color: red;
 }
 
+.item:hover {
+  background: #04AA6D;
+}
+
+.deletebutton {
+  display: none;
+}
+
+.item:hover > .deletebutton {
+  display: block;
+}
+
+
 /*.listTitle__button:hover, 
 .listTitle__button:focus {
   color: red;
 }*/
 
-li { background: #333; }
-li:nth-child(odd) { background: #444; }
+/*li { background: #333; }
+li:nth-child(odd) { background: #444; }*/
 
 @media (min-width: 768px) {
   /*section {
@@ -426,6 +439,7 @@ class TodoListComponent extends HTMLElement {
 
     const button = document.createElement("button") as HTMLButtonElement
     button.className = 'button'
+    button.classList.add('deletebutton')
     button.textContent = "\u00D7" // '\uD83D\uDDD1'
 
     button.addEventListener('click', () => {
