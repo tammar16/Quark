@@ -339,10 +339,10 @@ class TodoListComponent extends HTMLElement {
         completed: false,
         createdAt: new Date(),
       }
-      this.currentTaskList().tasks.push(newTask)
+      this.currentTaskList().tasks.unshift(newTask)
       this.saveTasks()
 
-      this.addListItem(newTask)
+      this.updateTaskUI()
       this.input.value = ""
     })
 
